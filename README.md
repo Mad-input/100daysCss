@@ -1,6 +1,6 @@
-`Sites`
-|   |   |   
-|---|---|---
-| blog-card  | https://aquamarine-florentine-d2be91.netlify.app  |   
-|  qr-component | https://friendly-druid-77460c.netlify.app  |   
-|   |   |   
+# Sites
+
+| Tables       |                              Are                              |  Cool |
+| ------------ | :-----------------------------------------------------------: | ----: |
+| blog-card    |       https://aquamarine-florentine-d2be91.netlify.app        | $1600 |
+| qr-component | [centered ](https://aquamarine-florentine-d2be91.netlify.app) |   $12 |
