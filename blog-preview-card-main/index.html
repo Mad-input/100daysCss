@@ -11,8 +11,114 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      :root {
+        --primary-color: #f4d04e;
+        --black: #111111;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      @font-face {
+        font-family: "Figtree-VariableFont";
+        src: url(./assets/fonts/Figtree-VariableFont_wght.ttf);
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100dvh;
+        background: var(--primary-color);
+        font-family: "Figtree-VariableFont";
+        container-name: "media";
+
+        main {
+          .card {
+            width: 24rem;
+            background: #fff;
+            padding: 1.5rem;
+            border: 0.0625rem solid var(--black);
+            border-radius: 1.25rem;
+            box-shadow: 0.625rem 0.625rem 0 0 var(--black);
+            .header__card {
+              img {
+                width: 100%;
+                object-fit: cover;
+                border-radius: 0.625rem !important;
+                overflow: hidden;
+              }
+            }
+
+            .body__card {
+              .badge {
+                width: fit-content;
+                margin: 0.75rem 0;
+                padding: 0.25rem 0.75rem;
+                border-radius: 0.25rem;
+                font-weight: bolder;
+                font-size: 0.875rem;
+
+                background: var(--primary-color);
+              }
+
+              .title__card {
+                margin: 0.75rem 0;
+                color: var(--black);
+                font-weight: bolder;
+                cursor: pointer;
+                transition: color 0.2s;
+                &:hover {
+                  color: var(--primary-color);
+                }
+              }
+
+              .description__card {
+                color: #7f7f7f;
+                line-height: 1.7;
+                font-weight: 500;
+              }
+              .date {
+                font-size: 0.9375rem;
+              }
+            }
+
+            .footer__card {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              margin-top: 0.75rem;
+              img {
+                width: 2rem;
+                height: 2rem;
+              }
+            }
+          }
+        }
+      }
+
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+        margin-top: 1.25rem;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      @media screen and (max-width: 700px) {
+        :root {
+          font-size: 13px !important;
+        }
+      }
+    </style>
     <title>Frontend Mentor | Blog preview card</title>
   </head>
   <body>
