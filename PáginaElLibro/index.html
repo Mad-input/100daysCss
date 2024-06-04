@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/estilos.css" />
+  </head>
+  <body>
+    <div class="root">
+      <header>
+        <nav class="navigation">
+          <div class="logo">
+            <strong>ElLibro</strong>
+            <img src="./img/books.svg" alt="el libro logo - libros" />
+          </div>
+          <ul class="nav-list">
+            <li class="list-item">
+              <span>Libros</span>
+              <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
+              <ul class="submenu">
+                <li>Colecciones</li>
+                <li>Librerias</li>
+                <li>Géneros</li>
+                <li>Autores</li>
+              </ul>
+            </li>
+            <li class="list-item">
+              <span>Musica</span>
+              <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
+              <ul class="submenu">
+                <li>Artistas</li>
+                <li>Librerias</li>
+                <li>Géneros</li>
+                <li>Autores</li>
+              </ul>
+            </li>
+            <li class="list-item">
+              <span>Arte</span>
+              <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
+              <ul class="submenu">
+                <li>Colecciones</li>
+                <li>Librerias</li>
+                <li>Géneros</li>
+                <li>Autores</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="search">
+            <div>
+              <img src="./img/search.svg" alt="lupa" />
+            </div>
+            <input type="text" class="input-search" placeholder="Buscar" />
+          </div>
+        </nav>
+
+        <section class="hero">
+          <div class="genre">
+            <ul class="list-genre">
+              <li class="list-item">Articulo</li>
+              <li class="list-item">Cuento</li>
+              <li class="list-item">Fantacia</li>
+              <li class="list-item">Distópico</li>
+              <li class="list-item">Realidad Mágica</li>
+              <li class="list-item">Moraleja</li>
+              <li class="list-item">Idiomas</li>
+              <li class="list-item">Videos</li>
+              <li class="list-item">Autores</li>
+              <li class="list-item">Ensayo</li>
+              <li class="list-item">Novela</li>
+              <li class="list-item">Teatro</li>
+              <li class="list-item">Poesia</li>
+              <li class="list-item">Cronica</li>
+            </ul>
+          </div>
+          <button class="btn btnMoveLeft"><</button>
+          <div class="banners">
+            <div>
+              <img src="./img/moraleja.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/mitos.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/leyenda.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/vampiros.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/moraleja.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/mitos.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/leyenda.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./img/vampiros.jpg" alt="" />
+            </div>
+          </div>
+          <button class="btn btnMoveRight">></button>
+        </section>
+      </header>
+
+      <main>
+        <section class="books"></section>
+      </main>
+    </div>
+
+    <script>
+      const booksContainer = document.querySelector(".books");
+      const getInfoBook = async () => {
+        try {
+          const res = await fetch("./books.json");
+          const books = await res.json();
+          return Array.from(books);
+        } catch (e) {
+          throw new Error(`Internal Sever Error: ${e}`);
+          renderError();
+        }
+      };
+      const renderError = () => {
+        const messageError = document.createElement("div");
+        messageError.classList.add("error");
+        messageError.innerHTML = "<i>Algo Salio Mal</i>";
+        booksContainer.append(messageError);
+      };
+      /*TODO: conseguir todas las categorías de los libros y filtrarlas en una lista para que no queden repetidas*/
+      const createCategories = async () => {
+        try {
+          const books = await getInfoBook();
+          const categoryBooks = books.map((book) => book.category);
+          const newCategories = Array.from(new Set(categoryBooks));
+          return newCategories;
+        } catch (e) {
+          throw new Error("Internal server error");
+          renderError();
+        }
+      };
+
+      /*Renderizar las secciones para los libros*/
+      const renderSections = async () => {
+        const categories = await createCategories();
+        if (!categories) renderError();
+        else {
+          booksContainer.innerHTML = "";
+
+          categories.forEach((category) => {
+            const SectionCategory = document.createElement("section");
+            SectionCategory.classList.add("book-category");
+            SectionCategory.setAttribute("data-category", category);
+            SectionCategory.innerHTML = /*html*/ `
+            <strong class="category-title">${category}</strong>
+            <div class="section-books"></div>
+           `;
+            booksContainer.append(SectionCategory);
+          });
+        }
+      };
+
+      const renderBooks = async () => {
+        const booksData = await getInfoBook();
+        const SectionsCategories = document.querySelectorAll(".book-category");
+        if (!booksData) {
+          renderError();
+        } else {
+          /*Crear cada libro*/
+          booksData.forEach((book) => {
+            const BookElement = document.createElement("div");
+            BookElement.classList.add("book");
+            const BookHtml = /*html*/ `
+                <div class="wrapper">
+                    <a href="${book.link}" rel="noopener noreferrer" target="_blank">
+                        <img src="${book.imageLink}">
+                    </a>
+                </div>
+                <div class="info-book">
+                    <strong class="bookTitle">${book.title}</strong>
+                    <strong class="bookAuthor">Author: ${book.author}</strong>
+                    <small class="bookPages">Pages: ${book.pages}</small>
+                </div>
+                `;
+            BookElement.innerHTML = BookHtml;
+            /*Renderizar cada libro el el container de la section*/
+            SectionsCategories.forEach((section) => {
+              const dataCategory = section.dataset.category;
+              const container = section.querySelector(".section-books");
+              if (dataCategory === book.category) container.append(BookElement);
+            });
+          });
+        }
+      };
+      renderSections();
+      renderBooks();
+
+      /*Funcionalidad para el slider del header*/
+      const btnRight = document.querySelector(".btnMoveRight");
+      const btnLeft = document.querySelector(".btnMoveLeft");
+      const BannersContainer = document.querySelector(".banners");
+      /*Tomar un elemento de los banners*/
+      const [element] = BannersContainer.getElementsByTagName("div");
+      let pass = 0;
+      const moveScroll = (direction) => {
+        /*Mover el scroll automaticamente; llevar un control cada vez que va a la derecha */
+        if (pass === 6) {
+          BannersContainer.scrollLeft = 0;
+          pass = 0;
+        } else {
+          /*Sumar al scroll el ancho del elemento del banner*/
+          if (direction === "left") {
+            BannersContainer.scrollLeft -= element.offsetWidth;
+            pass === 0 ? "" : pass--;
+          } else if (direction === "right") {
+            BannersContainer.scrollLeft += element.offsetWidth;
+            pass++;
+          }
+        }
+      };
+      setInterval(() => {
+        moveScroll("right");
+      }, 3000);
+
+      btnRight.addEventListener("click", () => moveScroll("right"));
+      btnLeft.addEventListener("click", () => moveScroll("left"));
+    </script>
+  </body>
+</html>

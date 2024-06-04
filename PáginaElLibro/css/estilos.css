@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --bg: radial-gradient(circle, rgb(23, 57, 87), rgb(26, 47, 65));
+  --primary: rgb(23, 49, 71);
+  --radius: 20px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg) no-repeat;
+  font-family: "Noto sans", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+}
+
+header {
+  padding: 0 30px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1500;
+    background: var(--bg);
+    padding: 20px 0;
+    animation: integrate 1s;
+    animation-timeline: scroll();
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+    }
+    .nav-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      gap: 40px;
+      .list-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        list-style: none;
+        border: 1px solid rgba(75, 122, 192, 0.6);
+        border-radius: var(--radius);
+        cursor: pointer;
+        & > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: var(--primary);
+          border-radius: 0 var(--radius) var(--radius) 0;
+          padding: 5px;
+          svg {
+            vertical-align: top;
+          }
+        }
+        span {
+          margin: 0 15px;
+        }
+
+        .submenu {
+          position: absolute;
+          top: 110%;
+          left: 0;
+          width: 100%;
+          background: var(--bg);
+          border-radius: var(--radius);
+          height: 0;
+          overflow: hidden;
+          transition: 0.3s ease all;
+          li {
+            list-style: none;
+            padding: 10px 0;
+            border-bottom: 1px solid #fff7;
+            margin-bottom: 10px;
+          }
+        }
+
+        &:hover .submenu {
+          height: 300px;
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .search {
+    flex: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary);
+    border-radius: var(--radius);
+    padding: 0 5px;
+    & > div {
+      padding: 3px;
+      border-right: 1px solid rgba(83, 83, 83, 0.5);
+      svg {
+        vertical-align: top;
+      }
+    }
+    input {
+      border: none;
+      width: 100%;
+      border-radius: var(--radius);
+      padding: 10px;
+      font-size: 14px;
+      background: var(--primary);
+      color: #fff;
+      outline: none;
+    }
+  }
+
+  .hero {
+    margin-top: 60px;
+    position: relative;
+    .genre {
+      margin-bottom: 20px;
+      .list-genre {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .list-item {
+          list-style: none;
+          background: var(--primary);
+          padding: 10px 20px;
+          border-radius: var(--radius);
+          cursor: pointer;
+          margin: 5px;
+          transition: 0.3s ease all;
+          border: 1px solid rgba(75, 122, 192, 0.6);
+          &:hover {
+            background: rgb(29, 119, 253);
+            backdrop-filter: contrast(5);
+            box-shadow: 0 0 10px 5px rgb(29, 119, 253);
+          }
+        }
+      }
+    }
+    .btn {
+      --size: 50px;
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 100%;
+      border: none;
+      z-index: 1000;
+      top: calc(55% - (var(--size) / 2));
+      font-weight: bold;
+      font-size: 20px;
+      background: rgba(56, 108, 133, 0.5);
+      cursor: pointer;
+      transition: scale 200ms ease-in-out;
+      &:hover {
+        scale: 1.1;
+      }
+      &.btnMoveRight {
+        right: 0;
+      }
+    }
+
+    .banners {
+      display: flex;
+      gap: 40px;
+      margin: 40px 0;
+      scroll-snap-type: x mandatory;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      & > div {
+        position: sticky;
+        scroll-snap-align: start;
+        img {
+          border-radius: var(--radius);
+          width: 900px;
+        }
+      }
+    }
+  }
+}
+
+main {
+  padding: 0 40px;
+  .books {
+    .error {
+      color: rgb(226, 114, 114);
+    }
+
+    .book-category {
+      .section-books {
+        display: flex;
+        justify-content: space-around;
+        gap: 30px;
+        padding: 30px;
+
+        .book {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          max-width: 200px;
+
+          img {
+            height: 300px;
+            cursor: pointer;
+            transition: 0.3s ease all;
+            &:hover {
+              background: rgb(29, 119, 253);
+              backdrop-filter: contrast(5);
+              box-shadow: 0 0 30px 5px rgb(29, 119, 253);
+              scale: 1.1;
+            }
+          }
+          .info-book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            .bookAuthor {
+              color: rgb(29, 119, 253);
+              font-weight: bold;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes integrate {
+  to {
+    background: rgba(29, 119, 253, 0.6);
+  }
+}
