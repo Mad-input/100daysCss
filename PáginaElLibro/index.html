@@ -15,34 +15,41 @@
             <img src="./img/books.svg" alt="el libro logo - libros" />
           </div>
           <ul class="nav-list">
-            <li class="list-item">
+            <li class="list-item" data-list="books">
               <span>Libros</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
-              <ul class="submenu">
-                <li>Colecciones</li>
-                <li>Librerias</li>
+              <ul class="submenu hidden" data-list="books">
+                <li>Contrainteligencia Artificial</li>
+                <li>Frases aleatorias</li>
                 <li>Géneros</li>
                 <li>Autores</li>
+                <li>Diccionarios</li>
+                <li>Audiolibros</li>
+                <li>Historia</li>
+                <li>Bélico</li>
+                <li>Terror</li>
               </ul>
             </li>
-            <li class="list-item">
+            <li class="list-item" data-list="music">
               <span>Musica</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
-              <ul class="submenu">
-                <li>Artistas</li>
-                <li>Librerias</li>
-                <li>Géneros</li>
-                <li>Autores</li>
+              <ul class="submenu hidden" data-list="music">
+                <li>Compositores</li>
+                <li>Intérpretes</li>
+                <li>Inspirada en libros</li>
+                <li>Culta</li>
+                <li>Folclórica</li>
+                <li>Rock</li>
               </ul>
             </li>
-            <li class="list-item">
+            <li class="list-item" data-list="art">
               <span>Arte</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
-              <ul class="submenu">
-                <li>Colecciones</li>
-                <li>Librerias</li>
-                <li>Géneros</li>
-                <li>Autores</li>
+              <ul class="submenu hidden" data-list="art">
+                <li>Artistas</li>
+                <li>Fotografía</li>
+                <li>Por Paises</li>
+                <li>Inspirado en libros</li>
               </ul>
             </li>
           </ul>
@@ -75,30 +82,25 @@
           </div>
           <button class="btn btnMoveLeft"><</button>
           <div class="banners">
-            <div>
-              <img src="./img/moraleja.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/mitos.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/leyenda.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/vampiros.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/moraleja.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/mitos.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/leyenda.jpg" alt="" />
-            </div>
-            <div>
-              <img src="./img/vampiros.jpg" alt="" />
-            </div>
+            <div><img src="./img/1.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/2.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/3.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/4.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/5.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/6.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/7.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/8.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/9.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/10.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/11.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/13.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/14.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/15.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/16.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/17.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/18.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/19.jpg" alt="ElLibro - Images" /></div>
+            <div><img src="./img/20.jpg" alt="ElLibro - Images" /></div>
           </div>
           <button class="btn btnMoveRight">></button>
         </section>
@@ -200,20 +202,21 @@
       const btnLeft = document.querySelector(".btnMoveLeft");
       const BannersContainer = document.querySelector(".banners");
       /*Tomar un elemento de los banners*/
-      const [element] = BannersContainer.getElementsByTagName("div");
+      const elemenstSlider = BannersContainer.getElementsByTagName("div");
+      const [currentElement] = elemenstSlider;
       let pass = 0;
       const moveScroll = (direction) => {
         /*Mover el scroll automaticamente; llevar un control cada vez que va a la derecha */
-        if (pass === 6) {
+        if (pass === elemenstSlider.length - 2) {
           BannersContainer.scrollLeft = 0;
           pass = 0;
         } else {
           /*Sumar al scroll el ancho del elemento del banner*/
           if (direction === "left") {
-            BannersContainer.scrollLeft -= element.offsetWidth;
+            BannersContainer.scrollLeft -= currentElement.offsetWidth;
             pass === 0 ? "" : pass--;
           } else if (direction === "right") {
-            BannersContainer.scrollLeft += element.offsetWidth;
+            BannersContainer.scrollLeft += currentElement.offsetWidth;
             pass++;
           }
         }
@@ -224,6 +227,28 @@
 
       btnRight.addEventListener("click", () => moveScroll("right"));
       btnLeft.addEventListener("click", () => moveScroll("left"));
+
+      /*
+        Funcionalidad navigation
+      */
+
+      const listItems = document.querySelectorAll(".nav-list .list-item");
+      const submenus = document.querySelectorAll(".submenu");
+
+      listItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          submenus.forEach((submenu) => {
+            if (!submenu.classList.contains("hidden")) {
+              submenu.classList.add("hidden");
+            } else {
+              if (item.dataset.list === submenu.dataset.list) {
+                submenu.classList.toggle("hidden");
+                submenu.style.heigth += `${submenu.scrollHeight}px`;
+              }
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
