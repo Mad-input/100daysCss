@@ -3,47 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ElLibro</title>
     <link rel="stylesheet" href="./css/estilos.css" />
   </head>
   <body>
     <div class="root">
       <header>
         <nav class="navigation">
-          <div class="logo">
+          <a class="logo" href="/">
             <strong>ElLibro</strong>
             <img src="./img/books.svg" alt="el libro logo - libros" />
-          </div>
+          </a>
           <ul class="nav-list">
-            <li class="list-item" data-list="books">
-              <span>Libros</span>
+            <li class="list-item" data-list="books" tabindex="0">
+              <span>Books</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
               <ul class="submenu hidden" data-list="books">
-                <li>Contrainteligencia Artificial</li>
-                <li>Frases aleatorias</li>
-                <li>Géneros</li>
-                <li>Autores</li>
-                <li>Diccionarios</li>
-                <li>Audiolibros</li>
-                <li>Historia</li>
-                <li>Bélico</li>
-                <li>Terror</li>
+                <li>
+                  <img src="./img/icons/brain.svg" alt="icon" />
+                  <span>Contrainteligencia Artificial</span>
+                </li>
+                <li>
+                  <img src="./img/icons/random.svg" alt="icon" />
+                  <span>Frases aleatorias</span>
+                </li>
+                <li>
+                  <img src="./img/icons/gender.svg" alt="icon" />
+                  <span>Géneros</span>
+                </li>
+                <li>
+                  <img src="./img/icons/author.svg" alt="icon" />
+                  <span>Autores</span>
+                </li>
+                <li>
+                  <img src="./img/icons/dic.svg" alt="icon" />
+                  <span>Diccionarios</span>
+                </li>
+                <li>
+                  <img src="./img/icons/audio.svg" alt="icon" />
+                  <span>Audiolibros</span>
+                </li>
+                <li>
+                  <img src="./img/icons/history.svg" alt="icon" />
+                  <span>Historia</span>
+                </li>
+                <li>
+                  <img src="./img/icons/beli.svg" alt="icon" />
+                  <span>Bélico</span>
+                </li>
+                <li>
+                  <img src="./img/icons/terror.svg" alt="icon" />
+                  <span>Terror</span>
+                </li>
               </ul>
             </li>
-            <li class="list-item" data-list="music">
-              <span>Musica</span>
+            <li class="list-item" data-list="music" tabindex="1">
+              <span>Music</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
               <ul class="submenu hidden" data-list="music">
-                <li>Compositores</li>
-                <li>Intérpretes</li>
-                <li>Inspirada en libros</li>
-                <li>Culta</li>
-                <li>Folclórica</li>
-                <li>Rock</li>
+                <li><span>Compositores</span></li>
+                <li><span>Intérpretes</span></li>
+                <li><span>Inspirada en libros</span></li>
+                <li><span>Culta</span></li>
+                <li><span>Folclórica</span></li>
+                <li><span>Rock</span></li>
               </ul>
             </li>
-            <li class="list-item" data-list="art">
-              <span>Arte</span>
+            <li class="list-item" data-list="art" tabindex="2">
+              <span>Art</span>
               <div><img src="./img/chevron-down.svg" alt="arrow" /></div>
               <ul class="submenu hidden" data-list="art">
                 <li>Artistas</li>
@@ -63,46 +90,75 @@
 
         <section class="hero">
           <div class="genre">
-            <ul class="list-genre">
-              <li class="list-item">Articulo</li>
-              <li class="list-item">Cuento</li>
-              <li class="list-item">Fantacia</li>
-              <li class="list-item">Distópico</li>
-              <li class="list-item">Realidad Mágica</li>
-              <li class="list-item">Moraleja</li>
-              <li class="list-item">Idiomas</li>
-              <li class="list-item">Videos</li>
-              <li class="list-item">Autores</li>
-              <li class="list-item">Ensayo</li>
-              <li class="list-item">Novela</li>
-              <li class="list-item">Teatro</li>
-              <li class="list-item">Poesia</li>
-              <li class="list-item">Cronica</li>
-            </ul>
+            <button class="btnGenreLeft"></button>
+            <ul class="list-genre"></ul>
+            <button class="btnGenreRight"></button>
           </div>
-          <button class="btn btnMoveLeft"><</button>
+          <button class="btn btnMoveLeft">
+            <img src="./img/chevron-down.svg" alt="icon" />
+          </button>
           <div class="banners">
-            <div><img src="./img/1.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/2.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/3.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/4.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/5.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/6.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/7.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/8.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/9.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/10.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/11.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/13.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/14.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/15.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/16.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/17.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/18.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/19.jpg" alt="ElLibro - Images" /></div>
-            <div><img src="./img/20.jpg" alt="ElLibro - Images" /></div>
+            <a href="/pages/moralejas.html" class="item"
+              ><img src="./img/1.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="/pages/mitos.html" class="item"
+              ><img src="./img/2.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="/pages/enfermedad.html" class="item"
+              ><img src="./img/3.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/4.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/5.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/6.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/7.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/8.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/9.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/10.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/11.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/13.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/14.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/15.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/16.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/17.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/18.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/19.jpg" alt="ElLibro - Images"
+            /></a>
+            <a href="#" class="item"
+              ><img src="./img/20.jpg" alt="ElLibro - Images"
+            /></a>
           </div>
-          <button class="btn btnMoveRight">></button>
+          <button class="btn btnMoveRight">
+            <img src="./img/chevron-down.svg" alt="icon" />
+          </button>
         </section>
       </header>
 
@@ -111,144 +167,6 @@
       </main>
     </div>
 
-    <script>
-      const booksContainer = document.querySelector(".books");
-      const getInfoBook = async () => {
-        try {
-          const res = await fetch("./books.json");
-          const books = await res.json();
-          return Array.from(books);
-        } catch (e) {
-          throw new Error(`Internal Sever Error: ${e}`);
-          renderError();
-        }
-      };
-      const renderError = () => {
-        const messageError = document.createElement("div");
-        messageError.classList.add("error");
-        messageError.innerHTML = "<i>Algo Salio Mal</i>";
-        booksContainer.append(messageError);
-      };
-      /*TODO: conseguir todas las categorías de los libros y filtrarlas en una lista para que no queden repetidas*/
-      const createCategories = async () => {
-        try {
-          const books = await getInfoBook();
-          const categoryBooks = books.map((book) => book.category);
-          const newCategories = Array.from(new Set(categoryBooks));
-          return newCategories;
-        } catch (e) {
-          throw new Error("Internal server error");
-          renderError();
-        }
-      };
-
-      /*Renderizar las secciones para los libros*/
-      const renderSections = async () => {
-        const categories = await createCategories();
-        if (!categories) renderError();
-        else {
-          booksContainer.innerHTML = "";
-
-          categories.forEach((category) => {
-            const SectionCategory = document.createElement("section");
-            SectionCategory.classList.add("book-category");
-            SectionCategory.setAttribute("data-category", category);
-            SectionCategory.innerHTML = /*html*/ `
-            <strong class="category-title">${category}</strong>
-            <div class="section-books"></div>
-           `;
-            booksContainer.append(SectionCategory);
-          });
-        }
-      };
-
-      const renderBooks = async () => {
-        const booksData = await getInfoBook();
-        const SectionsCategories = document.querySelectorAll(".book-category");
-        if (!booksData) {
-          renderError();
-        } else {
-          /*Crear cada libro*/
-          booksData.forEach((book) => {
-            const BookElement = document.createElement("div");
-            BookElement.classList.add("book");
-            const BookHtml = /*html*/ `
-                <div class="wrapper">
-                    <a href="${book.link}" rel="noopener noreferrer" target="_blank">
-                        <img src="${book.imageLink}">
-                    </a>
-                </div>
-                <div class="info-book">
-                    <strong class="bookTitle">${book.title}</strong>
-                    <strong class="bookAuthor">Author: ${book.author}</strong>
-                    <small class="bookPages">Pages: ${book.pages}</small>
-                </div>
-                `;
-            BookElement.innerHTML = BookHtml;
-            /*Renderizar cada libro el el container de la section*/
-            SectionsCategories.forEach((section) => {
-              const dataCategory = section.dataset.category;
-              const container = section.querySelector(".section-books");
-              if (dataCategory === book.category) container.append(BookElement);
-            });
-          });
-        }
-      };
-      renderSections();
-      renderBooks();
-
-      /*Funcionalidad para el slider del header*/
-      const btnRight = document.querySelector(".btnMoveRight");
-      const btnLeft = document.querySelector(".btnMoveLeft");
-      const BannersContainer = document.querySelector(".banners");
-      /*Tomar un elemento de los banners*/
-      const elemenstSlider = BannersContainer.getElementsByTagName("div");
-      const [currentElement] = elemenstSlider;
-      let pass = 0;
-      const moveScroll = (direction) => {
-        /*Mover el scroll automaticamente; llevar un control cada vez que va a la derecha */
-        if (pass === elemenstSlider.length - 2) {
-          BannersContainer.scrollLeft = 0;
-          pass = 0;
-        } else {
-          /*Sumar al scroll el ancho del elemento del banner*/
-          if (direction === "left") {
-            BannersContainer.scrollLeft -= currentElement.offsetWidth;
-            pass === 0 ? "" : pass--;
-          } else if (direction === "right") {
-            BannersContainer.scrollLeft += currentElement.offsetWidth;
-            pass++;
-          }
-        }
-      };
-      setInterval(() => {
-        moveScroll("right");
-      }, 3000);
-
-      btnRight.addEventListener("click", () => moveScroll("right"));
-      btnLeft.addEventListener("click", () => moveScroll("left"));
-
-      /*
-        Funcionalidad navigation
-      */
-
-      const listItems = document.querySelectorAll(".nav-list .list-item");
-      const submenus = document.querySelectorAll(".submenu");
-
-      listItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          submenus.forEach((submenu) => {
-            if (!submenu.classList.contains("hidden")) {
-              submenu.classList.add("hidden");
-            } else {
-              if (item.dataset.list === submenu.dataset.list) {
-                submenu.classList.toggle("hidden");
-                submenu.style.heigth += `${submenu.scrollHeight}px`;
-              }
-            }
-          });
-        });
-      });
-    </script>
+    <script src="./js/main.js" type="module"></script>
   </body>
 </html>
