@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Contact form</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <form id="form">
+        <h1 class="form-title col-2">Contact Us</h1>
+        <label class="entrie-1">
+          <span>First Name <span class="char">*</span></span>
+          <input type="text" class="text" />
+          <span class="error">This field is required</span>
+        </label>
+        <label class="entrie-1">
+          <span>Last Name <span class="char">*</span></span>
+          <input type="text" class="text" />
+          <span class="error">This field is required</span>
+        </label>
+        <label class="col-2 entrie-1">
+          <span>Email Address <span class="char">*</span></span>
+          <input type="text" class="text" />
+          <span class="error">This field is required</span>
+        </label>
+        <div class="type col-2">
+          <span>Query Type <span class="char">*</span></span>
+          <label>
+            <input type="checkbox" class="check" />
+            General Enquiry
+          </label>
+          <label>
+            <input type="checkbox" class="check" />
+            Support Request
+          </label>
+          <span class="error">Please select a type of query</span>
+        </div>
+        <label class="col-2 entrie-1">
+          <span>Message <span class="char">*</span></span>
+          <textarea class="text"></textarea>
+          <span class="error">This field is required</span>
+        </label>
+        <label class="agree">
+          <input type="checkbox" class="check-con" />
+          <span
+            >I consent to being contacted by the team
+            <span class="char">*</span></span
+          >
+          <span class="error">This field is required</span>
+        </label>
+        <button class="btn-form-submit col-2">Submit</button>
+      </form>
+    </main>
+
+    <script>
+      const form = document.getElementById("form");
+      const inputsText = Array.from(document.querySelectorAll(".text"));
+      const checkbox = Array.from(document.querySelectorAll(".check"));
+      const checkCon = document.querySelector(".check-con");
+
+      const addError = (element) => {
+        element.classList.add("field");
+        setTimeout(() => element.classList.remove("field"), 2000);
+      };
+
+      const showMessageSuccess = () => {
+        const container = document.createElement("div");
+        container.classList.add("success");
+        container.innerHTML = /*html*/ `
+          <h2>Message Sent!</h2>
+          <p>Thanks for completing the form. We'll be in touch soon!</p>
+        `;
+        form.reset();
+
+        document.body.append(container);
+        setTimeout(() => {
+          container.remove();
+        }, 3000);
+      };
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const check = () => {
+            inputsText.every((input) => {
+              if (!input.checked) {
+                addError(input);
+                return false;
+              }
+              return true;
+            });
+
+            if (checkbox.some((check) => check.checked)) {
+              return true;
+            } else {
+              addError(checkbox[0]);
+              return false;
+            }
+
+            return true;
+          };
+
+          if (check()) showMessageSuccess();
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+
+Contact Us
+
+  First Name
+  This field is required
+
+  Last Name
+  This field is required
+
+  Email Address
+  Please enter a valid email address
+  This field is required
+
+  Query Type
+  General Enquiry
+  Support Request
+  Please select a query type
+
+  Message
+  This field is required
+
+  I consent to being contacted by the team
+  To submit this form, please consent to being contacted
+
+  Submit
+
+  Message Sent!
+  Thanks for completing the form. We'll be in touch soon!
+-->
